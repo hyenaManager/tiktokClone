@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "tiktok",
+    "jsEngine": "hermes",
     "slug": "tiktok",
     "version": "1.0.0",
     "orientation": "portrait",
