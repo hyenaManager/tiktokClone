@@ -24,5 +24,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     fontWeight: "bold",
+    textShadowColor: "gray",
+    textShadowRadius: 3,
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
 });

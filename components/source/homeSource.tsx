@@ -19,23 +19,23 @@ export default function HomeSource() {
   // const carouselRef = useRef<FlatList<CarouselItem>>(null);
   const carouselRef = useRef<ICarouselInstance>(null);
   const itemViewport = useRef("");
-  const changeItemViewport = (newViewport: number) => {
-    itemViewport.current = JSON.stringify(newViewport);
-  };
-  const handleScrolling = (index: number) => {
-    const rawPoints = itemViewport.current.split(".")[1];
-    console.log("sliced data:", rawPoints.slice(0, 1));
+  // const changeItemViewport = (newViewport: number) => {
+  //   itemViewport.current = JSON.stringify(newViewport);
+  // };
+  // const handleScrolling = (index: number) => {
+  //   const rawPoints = itemViewport.current.split(".")[1];
+  //   console.log("sliced data:", rawPoints.slice(0, 1));
 
-    const currentIndex = carouselRef.current?.getCurrentIndex();
-    if (parseInt(rawPoints.slice(0, 1)) > 2) {
-      console.log("success");
+  //   const currentIndex = carouselRef.current?.getCurrentIndex();
+  //   if (parseInt(rawPoints.slice(0, 1)) > 2) {
+  //     console.log("success");
 
-      carouselRef.current?.scrollTo({ index: index });
-    } else {
-      console.log("failed");
-      carouselRef.current?.prev();
-    }
-  };
+  //     carouselRef.current?.scrollTo({ index: index });
+  //   } else {
+  //     console.log("failed");
+  //     carouselRef.current?.prev();
+  //   }
+  // };
   return (
     <View
       style={{
@@ -72,6 +72,7 @@ export default function HomeSource() {
           >
             <Image source={item.image} style={styles.backgroundImage} />
             <SourceDetail />
+            <AsideReaction />
           </View>
         )}
       />
@@ -85,7 +86,6 @@ export default function HomeSource() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={renderItem}
       /> */}
-      <AsideReaction />
     </View>
   );
 }

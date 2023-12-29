@@ -26,7 +26,7 @@ export function HomeScreen({ navigation }: any) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#2B1A20",
+    backgroundColor: "black",
     display: "flex",
     width: "100%",
     height: "100%",

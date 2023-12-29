@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import commentReducer from "./features/counter/commentSlice"
+import bottomRouteNameReducer from "./features/counter/bottomNavRoute"
+import headerRouteNameReducer from "./features/counter/headerNavRoute"
 const store =  configureStore({
   reducer: {
-    comment:commentReducer
+    comment:commentReducer,
+    bottomRouteName:bottomRouteNameReducer,
+    headerRouteName:headerRouteNameReducer
   },
 })
 

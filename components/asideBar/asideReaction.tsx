@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import CommentModal from "../modals/commentModal";
-import { useDispatch, useSelector } from "react-redux";
-import { changeStatus, showComment } from "../../features/counter/commentSlice";
+import { Entypo } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { changeStatus } from "../../features/counter/commentSlice";
 import { useAppSelector } from "../../hooks";
+import { data } from "../../source";
+import ProfileAdd from "./profile";
 
 export default function AsideReaction() {
   const dispatch = useDispatch();
   const show_comment = useAppSelector((state) => state.comment.status);
-
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.content}>
-        <Ionicons name="md-person-circle-outline" size={37} color="white" />
-      </View>
+      <ProfileAdd />
       <View style={styles.content}>
         <Ionicons name="ios-heart" size={35} color="white" />
       </View>
@@ -45,15 +44,16 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
+    alignItems: "center",
     paddingVertical: 10,
     zIndex: 20,
-    paddingBottom: 60,
+    paddingBottom: 10,
   },
   content: {
     display: "flex",
     flexDirection: "column",
     marginVertical: 16,
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
