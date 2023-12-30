@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { HomeScreen } from "./routes/homeStack";
+import { HomeTab } from "./routes/homeStack";
 import { DetailScreen } from "./routes/detailScreen";
 import { AppRegistry } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -33,7 +33,7 @@ function App() {
         >
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
+            component={HomeTab}
             options={{ title: "Home overview", headerShown: false }}
           />
           <Stack.Screen

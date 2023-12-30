@@ -10,3 +10,5 @@ export const data = [
     { image: require("./assets/imgList/8.jpg") },
     // Add more images as needed
   ];
+
+export const neeChan = require("./assets/imgList/oneechan.jpg")

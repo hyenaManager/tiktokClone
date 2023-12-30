@@ -8,7 +8,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { changeStatus } from "../../features/counter/commentSlice";
 import { useAppSelector } from "../../hooks";
-import { data } from "../../source";
+import { data } from "../../dummyData";
 import ProfileAdd from "./profile";
 
 export default function AsideReaction() {
@@ -26,7 +26,7 @@ export default function AsideReaction() {
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
-        <FontAwesome5 name="share" size={35} color="white" />
+        <Ionicons name="arrow-redo-sharp" size={35} color="white" />
       </View>
       <View style={styles.content}>
         <Feather name="circle" size={35} color="white" />

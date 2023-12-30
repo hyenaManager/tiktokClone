@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { data } from "../../source";
+import { data, neeChan } from "../../dummyData";
 
 export default function ProfileAdd() {
   return (
     <View style={styles.content}>
-      <Image
-        source={data[6].image}
-        width={50}
-        height={50}
-        style={styles.profile}
-      />
+      <Image source={neeChan} width={50} height={50} style={styles.profile} />
       <View
         style={{
           position: "absolute",
