@@ -9,6 +9,9 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { SearchCom } from "./routes/search";
 import SearchHead from "./components/search/searchHeader";
+import NewFollower from "./routes/newFollower";
+import Activities from "./routes/Activity";
+import SystemNotification from "./routes/systemNotis";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +31,7 @@ function App() {
             gestureEnabled: true,
             gestureDirection: "horizontal",
             headerShown: true,
-            animation: "fade",
+            animation: "slide_from_right",
           }}
         >
           <Stack.Screen
@@ -47,12 +50,61 @@ function App() {
               headerStyle: {
                 backgroundColor: "white",
               },
+              animation: "fade",
             }}
           />
           <Stack.Screen
             name="Detail"
             component={DetailScreen}
             options={{ title: "Detail", headerShown: false }}
+          />
+          <Stack.Screen
+            name="NewFollower"
+            component={NewFollower}
+            options={{
+              title: "New Followers",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "gray",
+              headerTitleStyle: {
+                fontWeight: "700",
+                color: "black",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Activity"
+            component={Activities}
+            options={{
+              title: "All activities",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "gray",
+              headerTitleStyle: {
+                fontWeight: "700",
+                color: "black",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="SystemNotification"
+            component={SystemNotification}
+            options={{
+              title: "System notifications",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "gray",
+              headerTitleStyle: {
+                fontWeight: "700",
+                color: "black",
+              },
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

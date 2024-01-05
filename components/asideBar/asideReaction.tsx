@@ -13,7 +13,6 @@ import ProfileAdd from "./profile";
 
 export default function AsideReaction() {
   const dispatch = useDispatch();
-  const show_comment = useAppSelector((state) => state.comment.status);
   return (
     <View style={styles.mainContainer}>
       <ProfileAdd />

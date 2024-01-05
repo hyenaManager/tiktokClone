@@ -1,8 +1,27 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  DimensionValue,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Animated, { Easing, Keyframe } from "react-native-reanimated";
+import { globalStyle } from "../../globalStyle";
 
-export default function CommentModal({ hide }: { hide: () => void }) {
+type ModalProps = {
+  hide: () => void;
+  height?: null | DimensionValue;
+  children: React.ReactNode;
+  headerTitle?: string | null;
+};
+
+export default function MyModal({
+  hide,
+  children,
+  height,
+  headerTitle,
+}: ModalProps) {
   const enteringAnimation = new Keyframe({
     from: {
       // originY: 0,
@@ -27,22 +46,32 @@ export default function CommentModal({ hide }: { hide: () => void }) {
     },
   }).duration(400);
   return (
-    <TouchableOpacity onPress={hide} style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
       <Animated.View
-        style={styles.contenContainer}
+        style={{
+          ...styles.contenContainer,
+          height: height || "auto",
+          maxHeight: "90%",
+        }}
         entering={enteringAnimation}
         exiting={exitingAnimation}
       >
-        <TouchableOpacity
-          onPress={(e) => {
-            e.stopPropagation();
-            hide();
+        <View
+          style={{
+            ...globalStyle.row_between,
+            padding: 15,
+            width: "100%",
           }}
         >
-          <Text style={{ color: "black", width: "100%" }}>Back</Text>
-        </TouchableOpacity>
+          <View></View>
+          <Text style={{ fontSize: 24, fontWeight: "700" }}>{headerTitle}</Text>
+          <TouchableOpacity onPress={hide}>
+            <Text style={{ fontSize: 24, fontWeight: "700" }}>X</Text>
+          </TouchableOpacity>
+        </View>
+        {children}
       </Animated.View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -68,6 +97,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: "70%",
+    height: "auto",
   },
 });

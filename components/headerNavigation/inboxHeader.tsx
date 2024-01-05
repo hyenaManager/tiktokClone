@@ -3,11 +3,10 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { Octicons } from "@expo/vector-icons";
-import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { changeHeaderRouteName } from "../../features/counter/headerNavRoute";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { changeNewChatModalStatus } from "../../features/counter/profileModalSlice";
 
 type RootStackParamList = {
   Home: undefined;
@@ -21,12 +20,11 @@ type HomeScreenNavigationProp = NativeStackNavigationProp<
 
 export function InboxHeader() {
   const navigation: HomeScreenNavigationProp = useNavigation();
+  const dispatch = useDispatch();
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity
-        //   style={styles.headerTextContainer}
-        >
+        <TouchableOpacity onPress={() => dispatch(changeNewChatModalStatus())}>
           <Ionicons name="add-circle-outline" size={30} color="black" />
         </TouchableOpacity>
         <TouchableOpacity>

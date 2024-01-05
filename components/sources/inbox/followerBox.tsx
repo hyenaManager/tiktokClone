@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { messageBoxStyle } from "./messageBoxStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import React, { useEffect } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
+import { NewFollowerScreenNavigationProp } from "../../../routeType";
+import { useNavigation } from "@react-navigation/native";
 
 export default function FollowerBox({
   title,
@@ -13,8 +15,12 @@ export default function FollowerBox({
   title: string;
   message: string;
 }) {
+  const navigation: NewFollowerScreenNavigationProp = useNavigation();
   return (
-    <View style={messageBoxStyle.messageBox}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("NewFollower")}
+      style={messageBoxStyle.messageBox}
+    >
       <View
         style={{
           width: 57,
@@ -36,6 +42,6 @@ export default function FollowerBox({
         </Text>
       </View>
       <MaterialIcons name="keyboard-arrow-right" color={"black"} size={24} />
-    </View>
+    </TouchableOpacity>
   );
 }

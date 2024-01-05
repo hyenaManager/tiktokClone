@@ -11,7 +11,7 @@ import { Octicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const InputSearch = () => {
+export const InputSearch = () => {
   const [searchText, setSearchText] = useState("");
   return (
     <View style={styles.inputContainer}>
@@ -24,7 +24,6 @@ const InputSearch = () => {
       <TextInput
         onChangeText={setSearchText}
         value={searchText}
-        autoFocus={true}
         style={{
           borderWidth: 1,
           borderStyle: "solid",

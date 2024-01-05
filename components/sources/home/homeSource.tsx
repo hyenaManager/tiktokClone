@@ -18,7 +18,6 @@ import SourceDetail from "../sourceDetail";
 import { HomeHeader } from "../../headerNavigation/headerNavigate";
 export default function HomeSource() {
   const carouselRef = useRef<ICarouselInstance>(null);
-  const itemViewport = useRef("");
 
   return (
     <View

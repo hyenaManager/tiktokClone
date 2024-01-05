@@ -43,7 +43,7 @@ export const messageBoxStyle = StyleSheet.create({
       width: "100%",
       padding: 7,
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       flexDirection: "column",
     },
     suggestionFollow:{

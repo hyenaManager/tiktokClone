@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 // import { messageBoxStyle } from "./messageBoxStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -6,6 +6,8 @@ import React, { useEffect } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
 import { messageBoxStyle } from "./messageBoxStyle";
+import { useNavigation } from "@react-navigation/native";
+import { ActivityScreenNavigationProp } from "../../../routeType";
 
 export function ActivitiesBox({
   title,
@@ -14,8 +16,12 @@ export function ActivitiesBox({
   title: string;
   message: string;
 }) {
+  const navigation: ActivityScreenNavigationProp = useNavigation();
   return (
-    <View style={messageBoxStyle.messageBox}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Activity")}
+      style={messageBoxStyle.messageBox}
+    >
       <View
         style={{
           width: 57,
@@ -37,6 +43,6 @@ export function ActivitiesBox({
         </Text>
       </View>
       <MaterialIcons name="keyboard-arrow-right" color={"black"} size={24} />
-    </View>
+    </TouchableOpacity>
   );
 }

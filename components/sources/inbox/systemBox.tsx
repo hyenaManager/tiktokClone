@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { messageBoxStyle } from "./messageBoxStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import React, { useEffect } from "react";
 
 import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { SystemNotificationScreenNavigationProp } from "../../../routeType";
 
 export function SystemBox({
   title,
@@ -13,8 +15,12 @@ export function SystemBox({
   title: string;
   message: string;
 }) {
+  const navigation: SystemNotificationScreenNavigationProp = useNavigation();
   return (
-    <View style={messageBoxStyle.messageBox}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("SystemNotification")}
+      style={messageBoxStyle.messageBox}
+    >
       <View
         style={{
           width: 57,
@@ -43,6 +49,6 @@ export function SystemBox({
           borderRadius: 50,
         }}
       ></View>
-    </View>
+    </TouchableOpacity>
   );
 }
