@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React, { useEffect } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
-import { NewFollowerScreenNavigationProp } from "../../../routeType";
+import { NewFollowerScreenNavigationProp } from "../../../types/routeType";
 import { useNavigation } from "@react-navigation/native";
 
 export default function FollowerBox({

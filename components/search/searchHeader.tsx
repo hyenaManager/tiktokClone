@@ -9,12 +9,19 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 
-export const InputSearch = () => {
+type InputTypeSearch = {
+  inputPleaceHolder?: string;
+  inputStyle?: {};
+};
+
+export const InputSearch = ({
+  inputPleaceHolder,
+  inputStyle,
+}: InputTypeSearch) => {
   const [searchText, setSearchText] = useState("");
   return (
-    <View style={styles.inputContainer}>
+    <View style={{ ...styles.inputContainer, ...inputStyle }}>
       <Octicons
         name="search"
         size={20}
@@ -23,6 +30,8 @@ export const InputSearch = () => {
       />
       <TextInput
         onChangeText={setSearchText}
+        placeholder={inputPleaceHolder ? inputPleaceHolder : "search"}
+        placeholderTextColor={"gray"}
         value={searchText}
         style={{
           borderWidth: 1,

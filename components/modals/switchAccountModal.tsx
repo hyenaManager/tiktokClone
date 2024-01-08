@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import MyModal from "./modal";
 import { globalStyle } from "../../globalStyle";
 import ImageCard from "../cards/profileCards";
@@ -29,10 +29,14 @@ export default function SwitchAccountModal({ hide }: { hide: () => void }) {
           <View
             style={{
               ...globalStyle.column_center,
+              borderWidth: 3,
+              marginHorizontal: 6,
+              padding: 2,
+              borderColor: "white",
               backgroundColor: "#dadada",
               borderRadius: 50,
-              width: 57,
-              height: 57,
+              width: 60,
+              height: 60,
             }}
           >
             <Ionicons name="add" size={24} color="black" />
@@ -43,3 +47,7 @@ export default function SwitchAccountModal({ hide }: { hide: () => void }) {
     </MyModal>
   );
 }
+
+const styles = StyleSheet.create({
+  itemContainer: {},
+});

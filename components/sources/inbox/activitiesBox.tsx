@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { messageBoxStyle } from "./messageBoxStyle";
 import { useNavigation } from "@react-navigation/native";
-import { ActivityScreenNavigationProp } from "../../../routeType";
+import { ActivityScreenNavigationProp } from "../../../types/routeType";
 
 export function ActivitiesBox({
   title,

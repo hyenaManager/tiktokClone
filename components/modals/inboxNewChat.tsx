@@ -1,153 +1,158 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import MyModal from "./modal";
 import { globalStyle } from "../../globalStyle";
 import { InputSearch } from "../search/searchHeader";
 import ImageCard from "../cards/profileCards";
-import { neeChan } from "../../dummyData";
-import { FontAwesome } from "@expo/vector-icons";
+import { data, neeChan } from "../../dummyData";
+import { RadioInput } from "../radioInput";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 
+type userType = {
+  image: any;
+  id: number;
+};
+
 export default function InboxNewChatModal({ hide }: { hide: () => void }) {
-  const PopupButton = () => {
-    return <ImageCard imgSource={neeChan} imageWH={40} />;
+  const [selectedUsers, setSelectedUsers] = useState<userType[] | []>([]);
+
+  const handleAddNewUser = (newUser: userType) => {
+    setSelectedUsers([...selectedUsers, newUser]);
   };
+
+  const handleRemoveUser = (id: number) => {
+    setSelectedUsers((users) => users.filter((user) => user.id != id));
+  };
+
+  const userNotExist = (id: number) => {
+    const obj = selectedUsers.find((user) => user.id === id);
+    return !obj; //return boolean , that if obj exist return false ,if not exist true
+  };
+
   return (
     <>
       <MyModal hide={hide} headerTitle={"Create new chat"}>
-        <View style={globalStyle.row_start}>
-          <InputSearch />
-        </View>
-        <View
-          style={{
-            ...globalStyle.row_between,
-            width: "100%",
-            paddingHorizontal: 12,
-            padding: 10,
-          }}
-        >
-          <Text>Select a group chat</Text>
-          <Text>{">"}</Text>
-        </View>
-
-        <View
-          style={{
+        <ScrollView
+          contentContainerStyle={{
             ...globalStyle.column_start,
-            width: "100%",
-            alignItems: "flex-start",
-            paddingHorizontal: 15,
+            overflow: "scroll",
+            paddingHorizontal: 5,
+            maxWidth: "98%",
+            paddingBottom: selectedUsers.length > 0 ? 140 : 10,
           }}
         >
-          <Text>A</Text>
+          <InputSearch inputStyle={styles.searchStyle} />
           <View
             style={{
               ...globalStyle.row_between,
               width: "100%",
-              marginVertical: 13,
+              paddingHorizontal: 12,
+              padding: 10,
             }}
           >
-            <ImageCard imgSource={neeChan} imageWH={40} />
-            <View style={{ ...globalStyle.column_start, minWidth: 170 }}>
-              <Text>Title</Text>
-              <Text>@usertuDis1322</Text>
-            </View>
-            <RadioInput />
+            <Text>Select a group chat{selectedUsers.length}</Text>
+            <Text>{">"}</Text>
           </View>
-        </View>
 
-        <View
-          style={{
-            ...globalStyle.column_start,
-            width: "100%",
-            alignItems: "flex-start",
-            paddingHorizontal: 15,
-          }}
-        >
-          <Text>B</Text>
-          <View
-            style={{
-              ...globalStyle.row_between,
-              width: "100%",
-              marginVertical: 13,
-            }}
-          >
-            <ImageCard imgSource={neeChan} imageWH={40} />
-            <View style={{ ...globalStyle.column_start, minWidth: 170 }}>
-              <Text>Title</Text>
-              <Text>@usertuDis1322</Text>
+          {data.map((item, index) => (
+            <View
+              key={index}
+              style={{
+                ...globalStyle.column_start,
+                width: "100%",
+                alignItems: "flex-start",
+                paddingHorizontal: 15,
+              }}
+            >
+              <Text>A</Text>
+              <View
+                style={{
+                  ...globalStyle.row_between,
+                  width: "100%",
+                  marginVertical: 13,
+                }}
+              >
+                <ImageCard imgSource={item.image} imageWH={40} />
+                <View style={{ ...globalStyle.column_start, minWidth: 170 }}>
+                  <Text>Title</Text>
+                  <Text>@usertuDis1322</Text>
+                </View>
+                <RadioInput
+                  onAdd={() => handleAddNewUser(item)}
+                  onRemove={() => handleRemoveUser(item.id)}
+                  isChecked={!userNotExist(item.id)}
+                />
+              </View>
             </View>
-            <RadioInput />
-          </View>
-        </View>
-
-        <View
-          style={{
-            ...globalStyle.column_start,
-            width: "100%",
-            alignItems: "flex-start",
-            paddingHorizontal: 15,
-          }}
-        >
-          <Text>C</Text>
-          <View
-            style={{
-              ...globalStyle.row_between,
-              width: "100%",
-              marginVertical: 13,
-            }}
-          >
-            <ImageCard imgSource={neeChan} imageWH={40} />
-            <View style={{ ...globalStyle.column_start, minWidth: 170 }}>
-              <Text>Title</Text>
-              <Text>@usertuDis1322</Text>
-            </View>
-            <RadioInput />
-          </View>
-        </View>
+          ))}
+        </ScrollView>
       </MyModal>
-      <View
-        style={{
-          ...globalStyle.column_start,
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-        }}
-      >
-        <View style={globalStyle.row_start}>
-          <ImageCard imgSource={neeChan} imageWH={40}>
-            <MaterialIcons name="cancel" size={16} color="gray" />
-          </ImageCard>
-        </View>
-        <TouchableOpacity
-          style={{ backgroundColor: "red", width: "100%", paddingVertical: 13 }}
-        >
-          <Text style={{ fontWeight: "bold", color: "white" }}>Chat</Text>
-        </TouchableOpacity>
-      </View>
+      {selectedUsers.length > 0 && (
+        <SelectedUser data={selectedUsers} removeUser={handleRemoveUser} />
+      )}
     </>
   );
 }
 
-export const RadioInput = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  if (isChecked)
-    return (
-      <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
-        <FontAwesome name="check-circle" size={20} color="red" />
-      </TouchableOpacity>
-    );
+const SelectedUser = ({
+  data,
+  removeUser,
+}: {
+  data: userType[];
+  removeUser: (userId: number) => void;
+}) => {
   return (
-    <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
-      <View
+    <View style={styles.selectedContainer}>
+      <ScrollView
+        horizontal
+        contentContainerStyle={{ ...globalStyle.row_start, overflow: "scroll" }}
+      >
+        {data.map((item) => (
+          <TouchableOpacity key={item.id} onPress={() => removeUser(item.id)}>
+            <ImageCard imgSource={item.image} imageWH={60}>
+              <MaterialIcons name="cancel" size={20} color="gray" />
+            </ImageCard>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+      <TouchableOpacity
         style={{
-          width: 20,
-          height: 20,
-          borderRadius: 50,
-          borderWidth: 1,
-          borderColor: "black",
+          ...globalStyle.column_center,
+          backgroundColor: "red",
+          width: "100%",
+          paddingVertical: 13,
+          borderRadius: 8,
         }}
-      ></View>
-    </TouchableOpacity>
+      >
+        <Text style={{ fontWeight: "bold", color: "white" }}>Chat</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  searchStyle: {
+    width: "100%",
+  },
+  selectedContainer: {
+    ...globalStyle.column_start,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 8,
+    paddingTop: 12,
+    borderTopRightRadius: 8,
+    borderTopLeftRadius: 8,
+    borderTopWidth: 0.7,
+    borderTopColor: "gray",
+    zIndex: 80,
+  },
+});

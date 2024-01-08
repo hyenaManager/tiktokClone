@@ -1,19 +1,32 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { profileStyle } from "./profieStyles";
 import { Octicons } from "@expo/vector-icons";
+import {
+  AddNewFriendScreenNavigationProp,
+  EditProfileScreenNavigationProp,
+} from "../../../types/routeType";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ProfileEditSection() {
+  const navigation: EditProfileScreenNavigationProp &
+    AddNewFriendScreenNavigationProp = useNavigation();
   return (
     <View style={profileStyle.profileDetails}>
-      <View style={styles.editItem}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("EditProfile")}
+        style={styles.editItem}
+      >
         <Text style={styles.editItemText}>Edit profile</Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.editItem}>
         <Text style={styles.editItemText}>Share profile</Text>
       </View>
-      <View style={styles.editItem}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AddNewFriend")}
+        style={styles.editItem}
+      >
         <Octicons name="person-add" size={20} color={"black"} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

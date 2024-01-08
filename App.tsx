@@ -12,6 +12,9 @@ import SearchHead from "./components/search/searchHeader";
 import NewFollower from "./routes/newFollower";
 import Activities from "./routes/Activity";
 import SystemNotification from "./routes/systemNotis";
+import EditProfile from "./routes/editProfile";
+import AddFriend from "./routes/addFriend";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +40,10 @@ function App() {
           <Stack.Screen
             name="Home"
             component={HomeTab}
-            options={{ title: "Home overview", headerShown: false }}
+            options={{
+              title: "Home overview",
+              headerShown: false,
+            }}
           />
           <Stack.Screen
             name="Search"
@@ -103,6 +109,52 @@ function App() {
               headerTitleStyle: {
                 fontWeight: "700",
                 color: "black",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{
+              title: "Edit profile",
+              headerTitleAlign: "center",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "900",
+                color: "black",
+                fontSize: 20,
+              },
+            }}
+          />
+
+          <Stack.Screen
+            name="AddNewFriend"
+            component={AddFriend}
+            options={{
+              title: "Add Friends",
+              headerTitleAlign: "center",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "900",
+                color: "black",
+                fontSize: 20,
+              },
+              headerRight(props) {
+                return (
+                  <MaterialCommunityIcons
+                    name="line-scan"
+                    size={24}
+                    color="black"
+                  />
+                );
               },
             }}
           />

@@ -63,3 +63,14 @@ export const globalStyle = StyleSheet.create({
     },
 
 })
+
+export const globalTextStyle = StyleSheet.create({
+    extraBold:{
+        fontWeight:"800",
+        color:"black"
+    },
+    lightText:{
+        color:"gray",
+        fontWeight:"500"
+    }
+})

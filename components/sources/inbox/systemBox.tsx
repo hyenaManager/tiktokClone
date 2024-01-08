@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { SystemNotificationScreenNavigationProp } from "../../../routeType";
+import { SystemNotificationScreenNavigationProp } from "../../../types/routeType";
 
 export function SystemBox({
   title,

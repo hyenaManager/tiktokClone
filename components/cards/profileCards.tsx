@@ -1,13 +1,5 @@
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { Image, ImageSourcePropType, View } from "react-native";
 import { profileStyle } from "../sources/profile/profieStyles";
-import { neeChan } from "../../dummyData";
 import React from "react";
 
 type ProfileImgCard = {
@@ -17,6 +9,7 @@ type ProfileImgCard = {
   imageWH?: number | null;
   children?: React.ReactNode | null;
   imgSource: ImageSourcePropType;
+  iconBg?: string | null;
 };
 
 const ImageCard: React.FC<ProfileImgCard> = ({
@@ -25,10 +18,11 @@ const ImageCard: React.FC<ProfileImgCard> = ({
   imgSource,
   imageWH,
   children,
+  iconBg,
 }: ProfileImgCard) => {
   return (
     <View style={profileStyle.profileImageContainer}>
-      <View style={{ ...profileStyle.profileImage, borderWidth: 0 }}>
+      <View style={{ ...profileStyle.profileImage }}>
         <Image
           source={imgSource}
           style={{
@@ -52,13 +46,13 @@ const ImageCard: React.FC<ProfileImgCard> = ({
           >
             <View
               style={{
-                backgroundColor: "white",
+                backgroundColor: iconBg ? iconBg : "white",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: 50,
                 borderWidth: 2,
-                borderColor: "white",
+                borderColor: iconBg ? iconBg : "white",
               }}
             >
               {children}
@@ -70,12 +64,4 @@ const ImageCard: React.FC<ProfileImgCard> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  imgStyle: {
-    width: 95,
-    height: 95,
-    padding: 3,
-    borderRadius: 50,
-  },
-});
 export default ImageCard;

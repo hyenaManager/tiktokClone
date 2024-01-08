@@ -1,5 +1,4 @@
-import { ScrollView, View } from "react-native";
-import { profileStyle } from "./profieStyles";
+import { ScrollView } from "react-native";
 import ProfileDetail from "./profileDetail";
 import Contents from "./content";
 
