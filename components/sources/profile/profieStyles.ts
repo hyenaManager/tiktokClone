@@ -43,6 +43,7 @@ export const profileStyle = StyleSheet.create({
         display:"flex",
         flexDirection:"column",
         width:"100%",
+        backgroundColor:"white"
     },
     profileContentNav:{
         display:"flex",
@@ -60,7 +61,7 @@ export const profileStyle = StyleSheet.create({
     ,
     profileContentVideo:{
         height:190,
-        width:125,
+        width:124,
         margin:2,
         objectFit:"cover",
     }

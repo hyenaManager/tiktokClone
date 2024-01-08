@@ -1,14 +1,13 @@
-import { FlatList, Image, ScrollView, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { profileStyle } from "./profieStyles";
 import { data } from "../../../dummyData";
-import ProfileContenNav from "./profileContentNav";
 
 export default function Contents() {
+  const duplicatedData = [...data, ...data, ...data];
   return (
     <View style={profileStyle.profileContentMainContainer}>
-      <ProfileContenNav />
-      <ScrollView
-        contentContainerStyle={{
+      <View
+        style={{
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
@@ -16,14 +15,14 @@ export default function Contents() {
           justifyContent: "flex-start",
         }}
       >
-        {data.map((item, index) => (
+        {duplicatedData.map((item, index) => (
           <Image
             style={profileStyle.profileContentVideo}
             key={index}
             source={item.image}
           />
         ))}
-      </ScrollView>
+      </View>
     </View>
   );
 }
