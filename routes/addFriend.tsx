@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { globalStyle } from "../globalStyle";
-import FindSocialFriend from "../components/sources/addFriend/findSocialFriend";
-import Suggestion from "../components/sources/inbox/suggestion";
+import FindSocialFriend from "../components/screens/addFriend/findSocialFriend";
+import Suggestion from "../components/screens/inbox/suggestion";
 import { InputSearch } from "../components/search/searchHeader";
 
 export default function AddFriend() {

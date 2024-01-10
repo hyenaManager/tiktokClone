@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { globalStyle } from "../globalStyle";
-import EditFiles from "../components/sources/editProfile/editFiles";
-import AboutYou from "../components/sources/editProfile/aboutYou";
+import EditFiles from "../components/screens/editProfile/editFiles";
+import AboutYou from "../components/screens/editProfile/aboutYou";
 
 export default function EditProfile() {
   return (

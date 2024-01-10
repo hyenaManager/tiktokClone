@@ -1,5 +1,5 @@
 import { Image, ImageSourcePropType, View } from "react-native";
-import { profileStyle } from "../sources/profile/profieStyles";
+import { profileStyle } from "../screens/profile/profieStyles";
 import React from "react";
 
 type ProfileImgCard = {

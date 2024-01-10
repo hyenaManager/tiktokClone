@@ -1,6 +1,6 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { View, TouchableOpacity } from "react-native";
-import { profileStyle } from "../sources/profile/profieStyles";
+import { profileStyle } from "../screens/profile/profieStyles";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";

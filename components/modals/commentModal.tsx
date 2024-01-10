@@ -27,19 +27,30 @@ export default function CommentModal({ hide }: { hide: () => void }) {
     },
   }).duration(400);
   return (
-    <TouchableOpacity onPress={hide} style={styles.mainContainer}>
+    <TouchableOpacity
+      onPress={hide}
+      style={styles.mainContainer}
+      activeOpacity={1}
+    >
       <Animated.View
         style={styles.contenContainer}
         entering={enteringAnimation}
         exiting={exitingAnimation}
       >
         <TouchableOpacity
-          onPress={(e) => {
-            e.stopPropagation();
-            hide();
-          }}
+          style={styles.propagationContainer}
+          onPress={(event) => event.stopPropagation()}
+          activeOpacity={1}
         >
-          <Text style={{ color: "black", width: "100%" }}>Back</Text>
+          <TouchableOpacity
+            onPress={(e) => {
+              e.stopPropagation();
+              hide();
+            }}
+            style={{ zIndex: 53 }}
+          >
+            <Text style={{ color: "black", width: "100%" }}>Back</Text>
+          </TouchableOpacity>
         </TouchableOpacity>
       </Animated.View>
     </TouchableOpacity>
@@ -69,5 +80,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "70%",
+  },
+  propagationContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: 52,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -1,7 +1,7 @@
 import { ScrollView, View } from "react-native";
 import { globalStyle } from "../globalStyle";
-import SystemNotiNav from "../components/sources/systemScreen/systemNotiNav";
-import SystemNotiCard from "../components/sources/systemScreen/systemNotiCard";
+import SystemNotiNav from "../components/screens/systemScreen/systemNotiNav";
+import SystemNotiCard from "../components/screens/systemScreen/systemNotiCard";
 
 export default function SystemNotification() {
   return (

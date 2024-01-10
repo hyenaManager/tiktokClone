@@ -1,11 +1,11 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { messageBoxStyle } from "../components/sources/inbox/messageBoxStyle";
-import SuggestionProfile from "../components/sources/inbox/suggestionCard";
+import { messageBoxStyle } from "../components/screens/inbox/messageBoxStyle";
+import SuggestionProfile from "../components/screens/inbox/suggestionCard";
 import { data } from "../dummyData";
-import NewFollowers from "../components/sources/newFollowerScreen/newFollower";
-import Suggestion from "../components/sources/inbox/suggestion";
+import NewFollowers from "../components/screens/newFollowerScreen/newFollower";
+import Suggestion from "../components/screens/inbox/suggestion";
 
 export default function NewFollower() {
   const [viewAll, setViewAll] = useState(false);

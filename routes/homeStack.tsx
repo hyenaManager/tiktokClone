@@ -1,11 +1,11 @@
 import React from "react";
 import { HomeBottomTab } from "../components/bottomNavigation/bottomNavigation";
-import HomeSource from "../components/sources/home/homeSource";
+import HomeSource from "../components/screens/home/homeSource";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import FriendSource from "../components/sources/friend/friendSource";
-import InboxSource from "../components/sources/inbox/mainMessageBox";
+import FriendSource from "../components/screens/friend/friendSource";
+import InboxSource from "../components/screens/inbox/mainMessageBox";
 import { InboxHeader } from "../components/headerNavigation/inboxHeader";
-import Profile from "../components/sources/profile/mainProfile";
+import Profile from "../components/screens/profile/mainProfile";
 import { ProfileHeader } from "../components/headerNavigation/profileHeader";
 import CommentModal from "../components/modals/commentModal";
 import { useAppSelector } from "../hooks";

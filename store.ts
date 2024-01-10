@@ -4,13 +4,15 @@ import bottomRouteNameReducer from "./features/counter/bottomNavRoute"
 import headerRouteNameReducer from "./features/counter/headerNavRoute"
 import themeReducer from "./features/counter/theme"
 import profileModalReducer from "./features/counter/profileModalSlice"
+import currentVideoReducer from "./features/counter/currentVideoIndex"
 const store =  configureStore({
   reducer: {
     comment:commentReducer,
     bottomRouteName:bottomRouteNameReducer,
     headerRouteName:headerRouteNameReducer,
     theme:themeReducer,
-    profileModal:profileModalReducer
+    profileModal:profileModalReducer,
+    playingVideo:currentVideoReducer
   },
 })
 
