@@ -15,6 +15,8 @@ import SystemNotification from "./routes/systemNotis";
 import EditProfile from "./routes/editProfile";
 import AddFriend from "./routes/addFriend";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import ProfileVideos from "./routes/profileVideos";
+import RoutingProfile from "./routes/routingProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -130,7 +132,42 @@ function App() {
               },
             }}
           />
-
+          <Stack.Screen
+            name="ProfileVideos"
+            component={ProfileVideos}
+            options={{
+              title: "ProfileVideos",
+              headerTitleAlign: "center",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "900",
+                color: "black",
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="RoutingProfile"
+            component={RoutingProfile}
+            options={{
+              title: "Profile",
+              headerTitleAlign: "center",
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "900",
+                color: "black",
+                fontSize: 20,
+              },
+            }}
+          />
           <Stack.Screen
             name="AddNewFriend"
             component={AddFriend}
