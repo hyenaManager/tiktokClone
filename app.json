@@ -26,7 +26,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow tiktok to access your microphone."
+        }
+      ]
+    ]
     
   }
 }

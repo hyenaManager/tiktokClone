@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { data, neeChan } from "../../dummyData";
+import { useNavigation } from "@react-navigation/native";
+import { RoutingProfileScreenNavigationProp } from "../../types/routeType";
 
 export default function ProfileAdd() {
+  const navigation: RoutingProfileScreenNavigationProp = useNavigation();
   return (
-    <View style={styles.content}>
+    <TouchableOpacity
+      activeOpacity={1}
+      onPress={() => navigation.navigate("RoutingProfile")}
+      style={styles.content}
+    >
       <Image source={neeChan} width={50} height={50} style={styles.profile} />
       <View
         style={{
@@ -21,7 +28,7 @@ export default function ProfileAdd() {
           <Entypo name="plus" size={27} color="white" />
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -15,16 +15,28 @@ export const data = [
   ];
 
   export const myClips = [
-    { uri: "./assets/tiktok/bGirl.mp4",id:0 },
-    { uri: "./assets/tiktok/bruh.mp4",id:1 },
-    { uri: "./assets/tiktok/cock.mp4",id:2 },
-    { uri: "./assets/tiktok/dj1.mp4",id:3 },
-    { uri: "./assets/tiktok/dj2.mp4",id:4 },
-    { uri: "./assets/tiktok/piglet.mp4",id:5 },
-    { uri: "./assets/tiktok/tom.mp4",id:6 },
-    { uri: "./assets/tiktok/vincin.mp4",id:7 },
+    { uri: require("./assets/tiktok/bGirl.mp4"),id:0 },
+    { uri: require("./assets/tiktok/bruh.mp4"),id:1 },
+    { uri: require("./assets/tiktok/cock.mp4"),id:2 },
+    { uri: require("./assets/tiktok/dj1.mp4"),id:3 },
+    { uri: require("./assets/tiktok/dj2.mp4"),id:4 },
+    { uri: require("./assets/tiktok/piglet.mp4"),id:5 },
+    { uri: require("./assets/tiktok/tom.mp4"),id:6 },
+    { uri: require("./assets/tiktok/vincin.mp4"),id:7 },
     // Add more images as needed
   ];
+
+  export const vd1 = [  { uri: require("./assets/tiktok/bGirl.mp4"),id:0 },
+  { uri: require("./assets/tiktok/bruh.mp4"),id:1 },]
+
+  export const vd2 = [ { uri: require("./assets/tiktok/cock.mp4"),id:0 },
+  { uri: require("./assets/tiktok/dj1.mp4"),id:1 },]
+
+  export const vd3 = [ { uri: require("./assets/tiktok/dj2.mp4"),id:0 },
+  { uri: require("./assets/tiktok/piglet.mp4"),id:1 },]
+
+  export const vd4 = [  { uri: require("./assets/tiktok/tom.mp4"),id:0 },
+  { uri: require("./assets/tiktok/vincin.mp4"),id:1 },]
 
 export const clips = [
   {id:0,uri:"https://firebasestorage.googleapis.com/v0/b/tsnproject-4c406.appspot.com/o/clips%2F0aa81fb3e69006c9adf4924faffb458d.mp48d3b3255-dd60-4a0d-bea6-4f8ce8cbfa0d?alt=media&token=e5974a4a-b7a5-4c8f-8371-80f0857f64c0"},

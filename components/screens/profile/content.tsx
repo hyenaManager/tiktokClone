@@ -1,12 +1,13 @@
-import { Image, ScrollView, View } from "react-native";
-import { ResizeMode } from "expo-av";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import { ResizeMode, Video } from "expo-av";
 import { profileStyle } from "./profieStyles";
-import { clips, data } from "../../../dummyData";
-import VideoPlayer from "expo-video-player";
+import { clips, data, myClips, vd2 } from "../../../dummyData";
+import { ProfileVideosScreenNavigationProp } from "../../../types/routeType";
+import { useNavigation } from "@react-navigation/native";
+//import VideoPlayer from "expo-video-player";
 
 export default function Contents() {
-  const duplicatedData = [...data, ...data, ...data];
-  const duplicatedClip = [...clips, ...clips];
+  const navigation: ProfileVideosScreenNavigationProp = useNavigation();
   return (
     <View style={profileStyle.profileContentMainContainer}>
       <View
@@ -18,30 +19,20 @@ export default function Contents() {
           justifyContent: "flex-start",
         }}
       >
-        {duplicatedClip.map((item, index) => (
-          //   <Image
-          //   style={profileStyle.profileContentVideo}
-          //   key={index}
-          //   source={item.image}
-          // />
-          <View key={index} style={{ margin: 2 }}>
-            <VideoPlayer
-              videoProps={{
-                shouldPlay: false,
-                resizeMode: ResizeMode.COVER,
-                source: {
-                  uri: item.uri,
-                },
-              }}
-              slider={{
-                visible: false,
-              }}
-              fullscreen={{
-                visible: false,
-              }}
-              style={{ height: 190, width: 124 }}
+        {vd2.map((item, index) => (
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => navigation.navigate("ProfileVideos")}
+            key={index}
+            style={{ margin: 2 }}
+          >
+            <Video
+              source={item.uri}
+              resizeMode={ResizeMode.CONTAIN}
+              useNativeControls={false}
+              style={{ height: 190, width: 124, backgroundColor: "black" }}
             />
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>

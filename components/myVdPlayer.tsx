@@ -1,21 +1,29 @@
 import React, { useEffect } from "react";
 import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { useAppSelector } from "../../../hooks";
+//import { useAppSelector } from "../../../hooks";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const myTry = require("../../../assets/tiktok/bGirl.mp4");
+//const myTry = require("../../../assets/tiktok/bGirl.mp4");
 
 type videoProps = {
   uri: string;
   idx?: number;
   id?: number;
+  mode?: "uri" | "mp4";
 };
 
-export default function ExpoPlayer({ uri, idx = 0, id }: videoProps) {
-  const index = useAppSelector((state) => state.playingVideo.index);
-  const exactUri = "../../." + uri; //for local
+export default function ExpoPlayer({
+  uri,
+  idx = 0,
+  id,
+  mode = "uri",
+}: videoProps) {
+  //const index = useAppSelector((state) => state.playingVideo.index);
+  const router = useRoute();
+  console.log("route name: ", router.name);
   const videoInstance = React.useRef<any>(null);
   const [status, setStatus] = React.useState<AVPlaybackStatus | any>({
     isPlaying: true,
@@ -23,8 +31,6 @@ export default function ExpoPlayer({ uri, idx = 0, id }: videoProps) {
   console.log(" error :", status.error);
 
   const handlePlayPause = async () => {
-    console.log(" called fun..");
-
     if (status.isPlaying) {
       await videoInstance.current?.pauseAsync();
     } else {
@@ -34,18 +40,21 @@ export default function ExpoPlayer({ uri, idx = 0, id }: videoProps) {
   //console.log(`idx ${idx} id ${id} :`, idx === id);
 
   useEffect(() => {
-    if (index === id) {
-      handlePlayPause();
-    } else {
-      videoInstance.current?.pauseAsync();
-      videoInstance.current?.setPositionAsync(0);
-    }
-  }, [index]);
+    const handleAsync = async () => {
+      if (idx === id) {
+        await handlePlayPause();
+      } else {
+        await videoInstance.current?.pauseAsync();
+        await videoInstance.current?.setPositionAsync(0);
+      }
+    };
+    handleAsync();
+  }, [idx]);
   return (
     <TouchableOpacity onPress={handlePlayPause} activeOpacity={1}>
       <Video
         ref={videoInstance}
-        source={{ uri: uri }}
+        source={mode === "mp4" ? uri : { uri: uri }}
         style={styles.mainContainer}
         useNativeControls={false}
         resizeMode={ResizeMode.CONTAIN}

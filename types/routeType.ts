@@ -7,7 +7,9 @@ export type RootStackParamList = {
     SystemNotification:undefined;
     Activity:undefined;
     EditProfile:undefined;
-    AddNewFriend:undefined
+    AddNewFriend:undefined;
+    ProfileVideos:undefined;
+    RoutingProfile:undefined;
   };
   
 export  type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -43,4 +45,14 @@ export  type EditProfileScreenNavigationProp = NativeStackNavigationProp<
 export  type AddNewFriendScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "AddNewFriend"
+>;
+
+export  type ProfileVideosScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "ProfileVideos"
+>;
+
+export  type RoutingProfileScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "RoutingProfile"
 >;
