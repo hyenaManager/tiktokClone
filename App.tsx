@@ -1,12 +1,14 @@
 import "react-native-gesture-handler";
-import React from "react";
-import { HomeTab } from "./routes/homeStack";
-import { DetailScreen } from "./routes/detailScreen";
+import React, { lazy } from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import store from "./store";
 import { AppRegistry } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
-import store from "./store";
+
+import { HomeTab } from "./routes/homeStack";
+import { DetailScreen } from "./routes/detailScreen";
 import { SearchCom } from "./routes/search";
 import SearchHead from "./components/search/searchHeader";
 import NewFollower from "./routes/newFollower";
@@ -14,9 +16,9 @@ import Activities from "./routes/Activity";
 import SystemNotification from "./routes/systemNotis";
 import EditProfile from "./routes/editProfile";
 import AddFriend from "./routes/addFriend";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ProfileVideos from "./routes/profileVideos";
 import RoutingProfile from "./routes/routingProfile";
+import { SearchVideo } from "./components/screens/profileVideos/inputSearch";
 
 const Stack = createNativeStackNavigator();
 
@@ -140,14 +142,18 @@ function App() {
               headerTitleAlign: "center",
               headerShown: true,
               headerStyle: {
-                backgroundColor: "white",
+                backgroundColor: "black",
               },
-              headerTintColor: "black",
+              headerTitle: () => (
+                <SearchVideo inputPleaceHolder="Search content" />
+              ),
+              headerTintColor: "white",
               headerTitleStyle: {
                 fontWeight: "900",
                 color: "black",
                 fontSize: 20,
               },
+              animation: "fade",
             }}
           />
           <Stack.Screen
