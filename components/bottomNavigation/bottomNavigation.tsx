@@ -50,6 +50,7 @@ export function HomeBottomTab({
           });
           if (!isFocused && !event.defaultPrevented) {
             themToogle(currentRoute);
+            dispatch(changeBottomRouteName(label as any));
             navigation.navigate(route.name, route.params);
           }
         };

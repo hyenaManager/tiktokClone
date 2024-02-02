@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-//import { useAppSelector } from "../../../hooks";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useAppSelector } from "../hooks";
+import bottomNavRoute from "../features/counter/bottomNavRoute";
 
 //const myTry = require("../../../assets/tiktok/bGirl.mp4");
 
@@ -22,8 +23,10 @@ export default function ExpoPlayer({
   mode = "uri",
 }: videoProps) {
   //const index = useAppSelector((state) => state.playingVideo.index);
-  const router = useRoute();
-  console.log("route name: ", router.name);
+  const tabRouteName = useAppSelector(
+    (state) => state.bottomRouteName.routeName
+  );
+  console.log("tab bottom name: ", tabRouteName);
   const videoInstance = React.useRef<any>(null);
   const [status, setStatus] = React.useState<AVPlaybackStatus | any>({
     isPlaying: true,
@@ -50,11 +53,22 @@ export default function ExpoPlayer({
     };
     handleAsync();
   }, [idx]);
+  useEffect(() => {
+    console.log("it reached here at least top..");
+    const handlePause = async () => {
+      console.log("it reaches here....");
+
+      if ("home" != tabRouteName) {
+        await videoInstance.current?.pauseAsync();
+      }
+    };
+    handlePause();
+  }, [tabRouteName]);
   return (
     <TouchableOpacity onPress={handlePlayPause} activeOpacity={1}>
       <Video
         ref={videoInstance}
-        source={mode === "mp4" ? uri : { uri: uri }}
+        source={mode === "mp4" ? uri : ({ uri: uri } as any)}
         style={styles.mainContainer}
         useNativeControls={false}
         resizeMode={ResizeMode.CONTAIN}

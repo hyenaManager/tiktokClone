@@ -1,8 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
 
 interface BottomNavtype {
-    routeName:"home"|"friend",
+    routeName:"home"|"friend"|"inbox"|"profile",
 }
 const initialState:BottomNavtype = {
     routeName:"home"
@@ -12,7 +11,7 @@ export const bottomNavRoute = createSlice({
     name:"bottomRouteName",
     initialState,
     reducers:{
-        changeBottomRouteName:(state,action:PayloadAction<"home"|"friend">)=>{
+        changeBottomRouteName:(state,action:PayloadAction<"home"|"friend"|"inbox"|"profile">)=>{
             state.routeName = action.payload
         }
     }
