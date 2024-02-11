@@ -2,22 +2,26 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { changeStatus } from "../../features/counter/commentSlice";
-import { useAppSelector } from "../../hooks";
-import { data } from "../../dummyData";
 import ProfileAdd from "./profile";
+import { useNavigation } from "@react-navigation/native";
+import { RoutingGettingStartProp } from "../../types/routeType";
 
 export default function AsideReaction() {
   const dispatch = useDispatch();
+  const navigate: RoutingGettingStartProp = useNavigation();
   return (
     <View style={styles.mainContainer}>
       <ProfileAdd />
       <View style={styles.content}>
-        <Ionicons name="ios-heart" size={35} color="white" />
+        <TouchableOpacity
+          onPress={() => navigate.push("GettingStart")}
+          activeOpacity={1}
+        >
+          <Ionicons name="ios-heart" size={35} color="white" />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <TouchableOpacity onPress={() => dispatch(changeStatus())}>

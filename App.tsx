@@ -19,6 +19,9 @@ import AddFriend from "./routes/addFriend";
 import ProfileVideos from "./routes/profileVideos";
 import RoutingProfile from "./routes/routingProfile";
 import { SearchVideo } from "./components/screens/profileVideos/inputSearch";
+import GettingStartTiktok from "./routes/gettingStart";
+import LoginPage from "./components/screens/authentication/loginPage";
+import Register from "./components/screens/authentication/register";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +50,33 @@ function App() {
             options={{
               title: "Home overview",
               headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="GettingStart"
+            component={GettingStartTiktok}
+            options={{
+              title: "Getting start",
+              headerShown: false,
+              animation: "none",
+            }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginPage}
+            options={{
+              title: "Login",
+              headerShown: false,
+              animation: "none",
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{
+              title: "Register",
+              headerShown: false,
+              animation: "none",
             }}
           />
           <Stack.Screen

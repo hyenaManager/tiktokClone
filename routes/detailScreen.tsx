@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import HeaderNavigation from "../components/headerNavigation/headerNavigate";
+// import HeaderNavigation from "../components/headerNavigation/headerNavigate";
 
 export function DetailScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <HeaderNavigation navigation={navigation} />
+      {/* <HeaderNavigation navigation={navigation} /> */}
     </View>
   );
 }

@@ -10,6 +10,9 @@ export type RootStackParamList = {
     AddNewFriend:undefined;
     ProfileVideos:undefined;
     RoutingProfile:undefined;
+    GettingStart:undefined;
+    Login:undefined;
+    Register:undefined;
   };
   
 export  type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -55,4 +58,19 @@ export  type ProfileVideosScreenNavigationProp = NativeStackNavigationProp<
 export  type RoutingProfileScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "RoutingProfile"
+>;
+
+export  type RoutingGettingStartProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "GettingStart"
+>;
+
+export  type RoutingLoginProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Login"
+>;
+
+export  type RoutingRegisterProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Register"
 >;
