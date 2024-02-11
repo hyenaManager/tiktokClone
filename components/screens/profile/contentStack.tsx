@@ -2,18 +2,17 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import ProfileContentTabs from "../../headerNavigation/profileContentTabs";
 import Contents from "./content";
 import { clips, data } from "../../../dummyData";
+import { useRoute } from "@react-navigation/native";
 
 const Tab = createMaterialTopTabNavigator();
 
 function ContentTab() {
-  const duplicatedData = [...data, ...data, ...data];
   const duplicatedClip = [...clips, ...clips];
+  const route = useRoute();
 
   const staticHightGenerator = () => {
     const remainder = duplicatedClip.length % 3;
     const rowCount = duplicatedClip.length / 3;
-    console.log("remainder :", remainder);
-    console.log("rowCount :", rowCount);
 
     if (remainder === 0) {
       return 202 * rowCount;

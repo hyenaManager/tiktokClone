@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { data, neeChan } from "../../dummyData";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { RoutingProfileScreenNavigationProp } from "../../types/routeType";
+import { useDispatch } from "react-redux";
+import { changeCurrentRouteName } from "../../features/counter/currentRoute";
+import { useAppSelector } from "../../hooks";
 
 export default function ProfileAdd() {
   const navigation: RoutingProfileScreenNavigationProp = useNavigation();
+
+  const handleNavigate = () => {
+    navigation.navigate("RoutingProfile");
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={1}
-      onPress={() => navigation.navigate("RoutingProfile")}
+      onPress={handleNavigate}
       style={styles.content}
     >
       <Image source={neeChan} width={50} height={50} style={styles.profile} />

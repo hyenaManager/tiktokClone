@@ -3,10 +3,8 @@ import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAppSelector } from "../hooks";
-import bottomNavRoute from "../features/counter/bottomNavRoute";
-
+import { useIsFocused, useRoute } from "@react-navigation/native";
 //const myTry = require("../../../assets/tiktok/bGirl.mp4");
 
 type videoProps = {
@@ -14,6 +12,7 @@ type videoProps = {
   idx?: number;
   id?: number;
   mode?: "uri" | "mp4";
+  route: string; ///what route is using this player
 };
 
 export default function ExpoPlayer({
@@ -21,17 +20,14 @@ export default function ExpoPlayer({
   idx = 0,
   id,
   mode = "uri",
+  route,
 }: videoProps) {
-  //const index = useAppSelector((state) => state.playingVideo.index);
-  const tabRouteName = useAppSelector(
-    (state) => state.bottomRouteName.routeName
-  );
-  console.log("tab bottom name: ", tabRouteName);
+  const isFocused = useIsFocused();
   const videoInstance = React.useRef<any>(null);
   const [status, setStatus] = React.useState<AVPlaybackStatus | any>({
     isPlaying: true,
   });
-  console.log(" error :", status.error);
+  //console.log(" error :", status.error);
 
   const handlePlayPause = async () => {
     if (status.isPlaying) {
@@ -40,7 +36,6 @@ export default function ExpoPlayer({
       await videoInstance.current?.playAsync();
     }
   };
-  //console.log(`idx ${idx} id ${id} :`, idx === id);
 
   useEffect(() => {
     const handleAsync = async () => {
@@ -54,16 +49,14 @@ export default function ExpoPlayer({
     handleAsync();
   }, [idx]);
   useEffect(() => {
-    console.log("it reached here at least top..");
     const handlePause = async () => {
-      console.log("it reaches here....");
-
-      if ("home" != tabRouteName) {
+      if (!isFocused) {
         await videoInstance.current?.pauseAsync();
       }
     };
     handlePause();
-  }, [tabRouteName]);
+  }, [isFocused]);
+
   return (
     <TouchableOpacity onPress={handlePlayPause} activeOpacity={1}>
       <Video

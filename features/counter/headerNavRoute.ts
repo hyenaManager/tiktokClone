@@ -1,15 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface HeaderNavType {
-    routeName:"forYou"|"following",
-}
-const initialState:HeaderNavType = {
-    routeName:"forYou"
-}
+// interface HeaderNavType {
+//     routeName:"forYou"|"following",
+// }
+// const initialState:HeaderNavType = {
+//     routeName:"forYou"
+// }
 
 export const headerNavRoute = createSlice({
     name:"headerRouteName",
-    initialState,
+    initialState:{routeName:"forYou"},
     reducers:{
         changeHeaderRouteName:(state,action:PayloadAction<"forYou"|"following">)=>{
             state.routeName = action.payload

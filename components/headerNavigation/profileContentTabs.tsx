@@ -12,8 +12,6 @@ export default function ProfileContentTabs({
   navigation,
   position,
 }: MaterialTopTabBarProps) {
-  console.log(state.routes[0].path, " is path");
-
   return (
     <View
       style={{

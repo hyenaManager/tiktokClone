@@ -16,6 +16,8 @@ import SourceDetail from "../sourceDetail";
 import { HomeHeader } from "../../headerNavigation/headerNavigate";
 
 import ExpoPlayer from "../../myVdPlayer";
+import { useRoute } from "@react-navigation/native";
+import { useAppSelector } from "../../../hooks";
 export default function HomeSource() {
   const carouselRef = useRef<ICarouselInstance>(null);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -23,7 +25,9 @@ export default function HomeSource() {
   const handleCurrentIdx = (idx: number) => {
     setCurrentIdx(idx);
   };
-  // console.log("currentIdx :", currentIdx.current);
+  const currentStackRoute = useAppSelector(
+    (state) => state.currentRouteName.routeName
+  );
 
   return (
     <View
@@ -61,7 +65,13 @@ export default function HomeSource() {
               height: "100%",
             }}
           >
-            <ExpoPlayer uri={item.uri} id={index} idx={currentIdx} mode="mp4" />
+            <ExpoPlayer
+              route="home"
+              uri={item.uri}
+              id={index}
+              idx={currentIdx}
+              mode="mp4"
+            />
             <SourceDetail />
             <AsideReaction />
           </View>

@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import { changeBottomRouteName } from "../../features/counter/bottomNavRoute";
+import { changeCurrentRouteName } from "../../features/counter/currentRoute";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { changeTheme } from "../../features/counter/theme";
 
@@ -50,7 +50,7 @@ export function HomeBottomTab({
           });
           if (!isFocused && !event.defaultPrevented) {
             themToogle(currentRoute);
-            dispatch(changeBottomRouteName(label as any));
+            dispatch(changeCurrentRouteName(label as any));
             navigation.navigate(route.name, route.params);
           }
         };

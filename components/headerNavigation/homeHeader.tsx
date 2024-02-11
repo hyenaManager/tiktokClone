@@ -1,8 +1,7 @@
 import React from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { Octicons } from "@expo/vector-icons";
 import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { changeHeaderRouteName } from "../../features/counter/headerNavRoute";
@@ -20,11 +19,8 @@ type HomeScreenNavigationProp = NativeStackNavigationProp<
 >;
 
 export function HomeHeader() {
-  const headerRouteName = useAppSelector(
+  const header_RouteName = useAppSelector(
     (state) => state.headerRouteName.routeName
-  );
-  const bottomRouteName = useAppSelector(
-    (state) => state.bottomRouteName.routeName
   );
   const dispatch = useDispatch();
   const navigation = useNavigation<HomeScreenNavigationProp>();
@@ -36,7 +32,7 @@ export function HomeHeader() {
           onPress={() => dispatch(changeHeaderRouteName("following"))}
         >
           <Text style={header_styles.textStyle}>Following</Text>
-          {headerRouteName === "following" ? (
+          {header_RouteName === "following" ? (
             <View
               style={{
                 height: 3,
@@ -52,7 +48,7 @@ export function HomeHeader() {
           onPress={() => dispatch(changeHeaderRouteName("forYou"))}
         >
           <Text style={header_styles.textStyle}>For you</Text>
-          {headerRouteName === "forYou" ? (
+          {header_RouteName === "forYou" ? (
             <View
               style={{
                 height: 4,

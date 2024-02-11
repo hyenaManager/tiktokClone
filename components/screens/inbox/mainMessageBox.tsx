@@ -24,9 +24,6 @@ import { useRoute } from "@react-navigation/native";
 import Suggestion from "./suggestion";
 
 export default function InboxSource() {
-  // const route = useRoute();
-  // console.log("current route path: ", route.path, " name: ", route.name);
-
   return (
     <ScrollView contentContainerStyle={messageBoxStyle.mainContainer}>
       <FlatList

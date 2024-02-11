@@ -99,9 +99,9 @@ export function HomeHeader() {
   const headerRouteName = useAppSelector(
     (state) => state.headerRouteName.routeName
   );
-  const bottomRouteName = useAppSelector(
-    (state) => state.bottomRouteName.routeName
-  );
+  // const bottomRouteName = useAppSelector(
+  //   (state) => state.bottomRouteName.routeName
+  // );
   const dispatch = useDispatch();
   const navigation = useNavigation<HomeScreenNavigationProp>();
   return (

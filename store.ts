@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import commentReducer from "./features/counter/commentSlice"
-import bottomRouteNameReducer from "./features/counter/bottomNavRoute"
+import currentRouteReducer from "./features/counter/currentRoute"
 import headerRouteNameReducer from "./features/counter/headerNavRoute"
 import themeReducer from "./features/counter/theme"
 import profileModalReducer from "./features/counter/profileModalSlice"
@@ -8,7 +8,7 @@ import currentVideoReducer from "./features/counter/currentVideoIndex"
 const store =  configureStore({
   reducer: {
     comment:commentReducer,
-    bottomRouteName:bottomRouteNameReducer,
+    currentRouteName:currentRouteReducer,
     headerRouteName:headerRouteNameReducer,
     theme:themeReducer,
     profileModal:profileModalReducer,

@@ -21,7 +21,6 @@ export default function ProfileVideo() {
   const handleCurrentIdx = (idx: number) => {
     setCurrentIdx(idx);
   };
-  // console.log("currentIdx :", currentIdx.current);
 
   return (
     <View
@@ -61,6 +60,7 @@ export default function ProfileVideo() {
               idx={currentIdx}
               uri={item.uri}
               mode="mp4"
+              route="profileVideos"
             />
             <SourceDetail />
             <AsideReaction />
