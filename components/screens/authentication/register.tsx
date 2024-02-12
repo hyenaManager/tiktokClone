@@ -26,31 +26,27 @@ export default function Register() {
   console.log(validateMessage);
 
   const handleCheckError = (error: any) => {
-    if (error[0].path[0] === "email") {
-      console.log("it reaches email tho error[0]:", error[0].message);
-
-      setValidateMessage({ ...validateMessage, email: error[0].message });
-    } else {
-      setValidateMessage({ ...validateMessage, email: "" });
-    }
-    if (error[1].path[0] === "password") {
-      console.log("reach pass and index:");
-
-      setValidateMessage({ ...validateMessage, password: error[0].message });
-    } else {
-      setValidateMessage({ ...validateMessage, password: "" });
-    }
+    let validateMessages = { ...validateMessage };
+    error.map((err: any, i: number) => {
+      if (err.path[0] === "email") {
+        validateMessages.email = err.message;
+      } else {
+        validateMessages.password = err.message;
+      }
+    });
+    return setValidateMessage(validateMessages);
   };
   useEffect(() => {
     const checkFormValidate = () => {
-      const validation = validationSchema.parse({ email, password });
+      validationSchema.parse({ email, password });
     };
     try {
       checkFormValidate();
     } catch (error: any) {
       const parsedError = JSON.parse(error.message);
-      // console.log("error cathed:", parsedError);
-      handleCheckError(parsedError);
+      if (parsedError.length > 0) {
+        handleCheckError(parsedError);
+      }
     }
   }, [email, password, confirmPassword]);
   return (
