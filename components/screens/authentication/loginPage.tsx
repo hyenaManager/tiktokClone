@@ -1,7 +1,6 @@
 import { TextInput, View } from "react-native";
 import AuthenMainBody from "./authenMainBody";
 import AuthenButton from "./authenticateBtn";
-import { globalStyle } from "../../../globalStyle";
 import { authenStyles } from "./authenStyle";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
