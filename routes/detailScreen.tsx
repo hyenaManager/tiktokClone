@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-// import HeaderNavigation from "../components/headerNavigation/headerNavigate";
 
 export function DetailScreen({ navigation }: any) {
   return (
