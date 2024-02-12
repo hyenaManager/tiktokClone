@@ -7,12 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-const validationSchema = z.object({
-  email: z.string().email({ message: "Invalid email address" }),
-  password: z.string().min(6, {
-    message: "Password must be at least 8 character.",
-  }),
-});
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -23,6 +17,19 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+  const validationSchema = z.object({
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string().min(6, {
+      message: "Password must be at least 8 character.",
+    }),
+    confirmPassword: z.string().refine(
+      () => {
+        let isMatch = confirmPassword === password;
+        return isMatch;
+      },
+      { message: "Passwords are not match" }
+    ),
+  });
   console.log(validateMessage);
 
   const handleCheckError = (error: any) => {
@@ -30,7 +37,9 @@ export default function Register() {
     error.map((err: any, i: number) => {
       if (err.path[0] === "email") {
         validateMessages.email = err.message;
-      } else {
+      }
+
+      if (err.path[0]) {
         validateMessages.password = err.message;
       }
     });
