@@ -3,7 +3,6 @@ import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-import { useAppSelector } from "../hooks";
 import { useIsFocused, useRoute } from "@react-navigation/native";
 //const myTry = require("../../../assets/tiktok/bGirl.mp4");
 
